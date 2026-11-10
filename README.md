@@ -22,7 +22,7 @@ Publish the generated `dist/` directory on a static host. On Netlify, use `npm r
 
 ## Enquiry delivery
 
-The Hire me form submits through [FormSubmit](https://formsubmit.co/). It asks for a name, reply email, opportunity type, and message, with organisation optional. Submissions are routed to `ashwin.hr1997@gmail.com`. Submit a test enquiry from the hosted site and confirm the activation email in that inbox before relying on delivery. The direct email, LinkedIn, and résumé links sit alongside the form.
+The Hire me form submits through [FormSubmit](https://formsubmit.co/). It asks for a name, reply email, opportunity type, and message, with organisation optional. Submissions are routed to `anushka4141@gmail.com`. Submit a test enquiry from the hosted site and confirm the activation email in that inbox before relying on delivery. The direct email, LinkedIn, résumé, WhatsApp, and phone links sit alongside the form.
 
 ## Update the portfolio
 
