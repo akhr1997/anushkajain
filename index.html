@@ -7,6 +7,20 @@
 <meta name="page-type" content="service">
 <meta name="site-kind" content="other">
 <meta name="theme-color" content="#f5f5f7">
+<script>
+  function applyPortfolioTheme(value) {
+    const themeColors = { classic: '#f5f5f7', sage: '#eef2eb', plum: '#f6eff3', 'dark-purple': '#000000' };
+    const theme = Object.hasOwn(themeColors, value) ? value : 'classic';
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]').content = themeColors[theme];
+  }
+
+  try {
+    applyPortfolioTheme(localStorage.getItem('anushka-portfolio-theme'));
+  } catch {
+    applyPortfolioTheme('classic');
+  }
+</script>
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="/assets/motion/motion.css">
 <link rel="stylesheet" href="/assets/moments/word-highlight/moment.css">
@@ -335,7 +349,6 @@ p, li, dd { text-wrap: pretty; }
     <a href="#home">Back to top</a>
   </div>
 </footer>
-
 <dialog class="love-dialog" id="love-dialog" aria-labelledby="love-title" aria-describedby="love-note">
   <form method="dialog">
     <button class="love-dialog__close" type="submit" aria-label="Close" autofocus>×</button>
@@ -354,7 +367,68 @@ p, li, dd { text-wrap: pretty; }
   </dl>
   <p class="love-dialog__seconds"><span data-love-count="totalSeconds">0</span> total seconds since we met</p>
   <p class="love-dialog__seconds" id="love-anniversary"></p>
+  <details class="theme-picker" id="portfolio-theme">
+    <summary>
+      <span class="theme-picker__swatch" data-palette="classic" aria-hidden="true"></span>
+      <span>Theme <strong id="theme-name">Classic</strong></span>
+      <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </summary>
+    <div class="theme-picker__options" role="group" aria-label="Theme options">
+      <button type="button" data-value="classic" aria-pressed="true"><span class="theme-picker__swatch" data-palette="classic" aria-hidden="true"></span>Classic</button>
+      <button type="button" data-value="sage" aria-pressed="false"><span class="theme-picker__swatch" data-palette="sage" aria-hidden="true"></span>Sage</button>
+      <button type="button" data-value="plum" aria-pressed="false"><span class="theme-picker__swatch" data-palette="plum" aria-hidden="true"></span>Plum</button>
+      <button type="button" data-value="dark-purple" aria-pressed="false"><span class="theme-picker__swatch" data-palette="dark-purple" aria-hidden="true"></span>Black &amp; Purple</button>
+    </div>
+  </details>
 </dialog>
+
+<script>
+  const themePicker = document.getElementById('portfolio-theme');
+  const themeSummary = themePicker.querySelector('summary');
+  const themeOptions = themePicker.querySelectorAll('button[data-value]');
+
+  function updateThemePicker() {
+    const current = document.documentElement.dataset.theme;
+    for (const option of themeOptions) {
+      option.setAttribute('aria-pressed', option.dataset.value === current);
+    }
+    document.getElementById('theme-name').textContent = themePicker.querySelector('[aria-pressed="true"]').textContent.trim();
+    themeSummary.querySelector('.theme-picker__swatch').dataset.palette = current;
+  }
+
+  updateThemePicker();
+  themePicker.addEventListener('click', (event) => {
+    const option = event.target.closest('button[data-value]');
+    if (!option) return;
+
+    applyPortfolioTheme(option.dataset.value);
+    updateThemePicker();
+    themePicker.open = false;
+    themeSummary.focus();
+    try {
+      localStorage.setItem('anushka-portfolio-theme', option.dataset.value);
+    } catch {
+      // The current page still uses the selected theme.
+    }
+  });
+
+  themePicker.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && themePicker.open) {
+      event.preventDefault();
+      themePicker.open = false;
+      themeSummary.focus();
+    }
+  });
+
+  const themeDialog = themePicker.closest('dialog');
+  themeDialog.addEventListener('close', () => {
+    themePicker.open = false;
+  });
+
+  themeDialog.addEventListener('click', (event) => {
+    if (!themePicker.contains(event.target)) themePicker.open = false;
+  });
+</script>
 
 <script>
 (function () {
