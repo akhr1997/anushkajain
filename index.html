@@ -10,7 +10,6 @@
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="/assets/motion/motion.css">
 <link rel="stylesheet" href="/assets/moments/word-highlight/moment.css">
-<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script type="module" src="/assets/motion/motion.js"></script>
 <script type="module" src="/assets/moments/moments.js"></script>
 <meta name="description" content="Anushka Jain is a Mumbai based corporate lawyer with 4 years of experience in commercial agreements, private equity investments, acquisitions and foreign currency borrowings.">
@@ -95,7 +94,7 @@ p, li, dd { text-wrap: pretty; }
 }
 .band { padding-block: var(--s700); }
 .band.alt { background: transparent; }
-.alt .card, .alt .skill, .alt .chip, .alt .mini > li { background: var(--bg); }
+.alt .card, .alt .mini > li { background: var(--bg); }
 .section-head { display: flex; flex-direction: column; gap: var(--s100); margin-bottom: var(--s500); max-width: 680px; }
 .eyebrow { display: flex; align-items: center; gap: var(--s75); color: var(--accent); text-transform: uppercase; }
 .skip { position: absolute; left: var(--s200); top: -80px; background: var(--ink); color: var(--on-ink); padding: var(--s75) var(--s100); border-radius: 8px; z-index: 100; }
@@ -123,15 +122,8 @@ p, li, dd { text-wrap: pretty; }
 .mini { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
 .mini > li { background: var(--surface); padding: var(--s200); display: flex; flex-direction: column; gap: var(--s25); min-width: 0; }
 .mini > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
-.sub-head { margin-block: var(--s400) var(--s200); }
 
 /* skills */
-.top-skills { display: grid; gap: var(--s200); }
-.skill { border: 1px solid var(--line); border-radius: 16px; padding: var(--s300); background: var(--surface); display: flex; flex-direction: column; gap: var(--s100); color: var(--accent); }
-.skill h3 { color: var(--ink); }
-.skill p { color: var(--muted); }
-.chips { display: flex; flex-wrap: wrap; gap: var(--s75); }
-.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 9999px; padding: var(--s50) var(--s100); }
 
 </style>
 <link rel="stylesheet" href="portfolio.css">
@@ -158,7 +150,7 @@ p, li, dd { text-wrap: pretty; }
 
 
 <main id="main" tabindex="-1">
-  <section class="hero hero--editorial" id="home" data-nav="home" data-enter aria-labelledby="hero-title">
+  <section class="hero hero--editorial" id="home" data-nav="home" aria-labelledby="hero-title">
     <div class="wrap hero__grid">
       <div class="hero__copy">
         <p class="eyebrow caption-3">Corporate lawyer · Mumbai</p>
@@ -170,7 +162,7 @@ p, li, dd { text-wrap: pretty; }
         </div>
         <p class="hero__fact">4 years in corporate law</p>
       </div>
-      <figure class="hero__media hero-visual" data-enter-media data-visual>
+      <figure class="hero__media hero-visual" data-visual>
         <img src="/images/anushka-jain.jpeg" width="768" height="768" alt="Anushka Jain seated in an office" fetchpriority="high">
       </figure>
     </div>
@@ -188,30 +180,27 @@ p, li, dd { text-wrap: pretty; }
       <div class="section-head">
         <h2 id="exp-title" class="heading-3">Legal experience</h2>
       </div>
-      <div class="stack">
-        <article class="card">
-          <div class="card__top">
-            <div class="org"><svg class="i" aria-hidden="true" style="color:var(--accent)"><use href="#leaf"/></svg><h3 class="title-1">Stratford House</h3></div>
-            <p class="dates body-5">September 2025 to Present</p>
-          </div>
-          <div class="role"><p class="body-1">Legal and ESG Manager</p><p class="caption-2 muted">Sustainability driven legal initiatives and corporate advisory</p></div>
-        </article>
-        <article class="card">
-          <div class="card__top">
-            <div class="org"><svg class="i" aria-hidden="true" style="color:var(--accent)"><use href="#bank"/></svg><h3 class="title-1">ICICI Bank</h3></div>
-            <p class="dates body-5">3 years 8 months</p>
-          </div>
-          <div class="card__top">
-            <div class="role"><p class="body-1">Legal Manager</p><p class="caption-2 muted">Mumbai, Maharashtra</p></div>
-            <p class="dates body-5">August 2023 to March 2026</p>
-          </div>
-          <hr class="rule">
-          <div class="card__top">
-            <div class="role"><p class="body-1">Legal Management Trainee</p><p class="caption-2 muted">Mumbai, Maharashtra</p></div>
-            <p class="dates body-5">August 2022 to August 2023</p>
-          </div>
-        </article>
-      </div>
+      <details class="history" open>
+        <summary>Professional roles</summary>
+        <ul class="mini">
+          <li>
+            <p class="body-1">Stratford House</p>
+            <p class="caption-2 muted">Legal and ESG Manager</p>
+            <p class="caption-2 muted">September 2025 to Present</p>
+            <p class="caption-2 muted">Sustainability-driven legal initiatives and corporate advisory</p>
+          </li>
+          <li>
+            <p class="body-1">ICICI Bank</p>
+            <p class="caption-2 muted">Legal Manager · Mumbai, Maharashtra</p>
+            <p class="caption-2 muted">August 2023 to March 2026</p>
+          </li>
+          <li>
+            <p class="body-1">ICICI Bank</p>
+            <p class="caption-2 muted">Legal Management Trainee · Mumbai, Maharashtra</p>
+            <p class="caption-2 muted">August 2022 to August 2023</p>
+          </li>
+        </ul>
+      </details>
       <details class="history">
         <summary>Earlier internships and research</summary>
         <ul class="mini">
@@ -268,23 +257,28 @@ p, li, dd { text-wrap: pretty; }
       <div class="section-head">
         <h2 id="skills-title" class="heading-3">Areas of practice</h2>
       </div>
-      <div class="top-skills">
-        <article class="skill"><svg class="i" aria-hidden="true"><use href="#hand-coins"/></svg><h3 class="heading-6">Borrowing</h3><p class="body-3">Foreign currency borrowings and the banking documentation around them.</p></article>
-        <article class="skill"><svg class="i" aria-hidden="true"><use href="#magnifying-glass"/></svg><h3 class="heading-6">Due diligence</h3><p class="body-3">Review for private equity investments and strategic acquisitions.</p></article>
-        <article class="skill"><svg class="i" aria-hidden="true"><use href="#buildings"/></svg><h3 class="heading-6">Banking</h3><p class="body-3">Legal experience in a bank, including work on borrowing and commercial agreements.</p></article>
-      </div>
-      <h3 class="sub-head">Additional skills</h3>
-      <ul class="chips body-5">
-        <li class="chip">Commercial agreements</li>
-        <li class="chip">Private equity investments</li>
-        <li class="chip">Strategic acquisitions</li>
-        <li class="chip">Mergers and acquisitions</li>
-        <li class="chip">Cross border transactions</li>
-        <li class="chip">Regulatory strategy</li>
-        <li class="chip">Stakeholder negotiation</li>
-        <li class="chip">Corporate advisory</li>
-        <li class="chip">ESG and sustainability</li>
-      </ul>
+      <details class="history" open>
+        <summary>Core practice areas</summary>
+        <ul class="mini">
+          <li><p class="body-1">Borrowing</p><p class="caption-2 muted">Foreign currency borrowings and the banking documentation around them.</p></li>
+          <li><p class="body-1">Due diligence</p><p class="caption-2 muted">Review for private equity investments and strategic acquisitions.</p></li>
+          <li><p class="body-1">Banking</p><p class="caption-2 muted">Legal experience in a bank, including work on borrowing and commercial agreements.</p></li>
+        </ul>
+      </details>
+      <details class="history">
+        <summary>Additional skills</summary>
+        <ul class="mini">
+          <li><p class="body-1">Commercial agreements</p></li>
+          <li><p class="body-1">Private equity investments</p></li>
+          <li><p class="body-1">Strategic acquisitions</p></li>
+          <li><p class="body-1">Mergers and acquisitions</p></li>
+          <li><p class="body-1">Cross border transactions</p></li>
+          <li><p class="body-1">Regulatory strategy</p></li>
+          <li><p class="body-1">Stakeholder negotiation</p></li>
+          <li><p class="body-1">Corporate advisory</p></li>
+          <li><p class="body-1">ESG and sustainability</p></li>
+        </ul>
+      </details>
     </div>
   </section>
 
