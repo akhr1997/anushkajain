@@ -1,31 +1,29 @@
-# Anushka Jain — Legal Dossier Portfolio
+# Anushka Jain | Corporate Lawyer
 
-React implementation of the desktop and mobile Nush Website design exports supplied in this chat. The prior blue landing page has been replaced with the white, slate, and muted-blue dossier design.
+Anushka Jain’s professional portfolio covers her work in corporate law and ESG, career history, education, and areas of practice. The site includes a responsive glass navigation bar, a downloadable professional profile, and a Hire me enquiry form.
 
 ## Run locally
 
 ```sh
-npm install
+npm ci
 npm run dev
 ```
 
-Use the local URL printed by Vite.
+Open the URL printed by Vite. The site uses HTML, CSS, and JavaScript, with Vite for development and production builds.
 
-## Production build
+## Build and deploy
 
 ```sh
 npm run build
 npm run preview
 ```
 
-Desktop uses the bordered two-column editorial layout, full chronology, credential matrix, and contact/archive section. Mobile uses a portrait-first profile, serif headings, stacked panels, experience tabs, and fixed bottom navigation. Responsive breakpoint: 700px.
+Publish the generated `dist/` directory on a static host. On Netlify, use `npm run build` as the build command and `dist` as the publish directory.
 
-Navigation and experience tabs work locally. The enquiry form validates the inputs and opens a prefilled email draft for the visitor to review and send; there is no server submission or enquiry storage. Resume buttons download the supplied LinkedIn profile PDF. The supplied portrait is used directly.
+## Enquiry delivery
 
-Content follows the provided design exports, including bar-admission labels and competency percentages. Verify these professional details before public release. Employment dates retain the overlap present in the supplied LinkedIn profile.
+The Hire me form submits through [FormSubmit](https://formsubmit.co/). It asks for a name, reply email, opportunity type, and message, with organisation optional. Submissions are routed to `ashwin.hr1997@gmail.com`. Submit a test enquiry from the hosted site and confirm the activation email in that inbox before relying on delivery. The direct email, LinkedIn, and résumé links sit alongside the form.
 
-## Deploy on Netlify
+## Update the portfolio
 
-Set the base directory to this project folder, the build command to `npm run build`, and the publish directory to `dist`. No environment variables or hosting-specific runtime are required. For a manual deployment, run `npm run build` and upload the generated `dist` folder.
-
-Stack: React, Vite, Lucide icons, CSS. Fonts: Plus Jakarta Sans and Cormorant Garamond via Google Fonts with local fallbacks.
+Edit `index.html` for the content and `portfolio.css` for the layout. The portrait and résumé live in `public/images/` and `public/documents/`. The animation assets live in `public/assets/`.
